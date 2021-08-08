@@ -3,3 +3,21 @@ os: linux
 files:
   - source: /express/notejam
     destination: /usr/share/notejam
+permissions:
+  - object: /usr/share/notejam/codedeploy
+    pattern: "*.sh"
+    owner: root
+    group: root
+    mode: 755
+    type:
+      - file
+hooks:
+  BeforeInstall:
+    - location: codedeploy/before_install.sh
+      timeout: 180
+  ApplicationStart:
+    - location: codedeploy/application_start.sh
+      timeout: 180
+  ApplicationStop:
+    - location: codedeploy/application_stop.sh
+      timeout: 180
