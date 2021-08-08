@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# This will stop notejam
+# This script will start notejam
 cd /usr/share/notejam
-pm2 stop notejam || true
+pm2 start /usr/share/notejam/ecosystem.config.js -i 0 --name "notejam"
