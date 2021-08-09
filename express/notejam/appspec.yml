@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /express/notejam
+  - source: /
     destination: /usr/share/notejam
 permissions:
   - object: /usr/share/notejam/codedeploy
