@@ -2,4 +2,4 @@
 
 # This script will start notejam
 cd /usr/share/notejam
-PORT=80 npm run start
+pm2 start /usr/share/notejam/ecosystem.config.js -i 0 --name "notejam"
