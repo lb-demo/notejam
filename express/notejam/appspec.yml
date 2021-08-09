@@ -15,6 +15,9 @@ hooks:
   BeforeInstall:
     - location: codedeploy/before_install.sh
       timeout: 180
+  AfterInstall:
+      - location: codedeploy/after_install.sh
+        timeout: 180      
   ApplicationStart:
     - location: codedeploy/application_start.sh
       timeout: 180
