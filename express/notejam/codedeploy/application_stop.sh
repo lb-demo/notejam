@@ -2,4 +2,4 @@
 
 # This will stop notejam
 cd /usr/share/notejam
-killall node
+pm2 stop notejam || true
