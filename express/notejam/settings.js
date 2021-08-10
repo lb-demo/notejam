@@ -1,17 +1,22 @@
-var settings = {
-  development: {
-    db: "notejam.db",
-    dsn: "sqlite://notejam.db"
-  },
-  test: {
-    db: "notejam_test.db",
-    dsn: "sqlite://notejam_test.db"
-  }
+require('dotenv').config();
+
+const dbHost = process.env.DB_HOST
+const dbUsername = process.env.DB_USERNAME
+const dbPassword = process.env.DB_PASSWORD
+const dbName = process.env.DB_NAME;
+
+const dsn = {
+  host:     dbHost,
+  user: dbUsername,
+  password: dbPassword,
+  database: dbName,
+  protocol: 'mysql',
+  port:     '3306',
+  query:    {pool: true}
 };
 
 
-var env = process.env.NODE_ENV
-if (!env) {
-  env = 'development'
-};
-module.exports = settings[env];
+
+module.exports.dsn = dsn;
+
+

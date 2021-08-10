@@ -9,7 +9,7 @@ module.exports = function (db, cb) {
   }, {
     validations: {
       email: [orm.enforce.unique("User with given email already exists!"),
-              orm.enforce.patterns.email("Invalid email")],
+        orm.enforce.patterns.email("Invalid email")],
       password: orm.enforce.notEmptyString("Password is required"),
       // @TODO add "match passwords" validation
     }
@@ -35,6 +35,14 @@ module.exports = function (db, cb) {
     methods: {
       updatedAt: function () {
         return moment(this.updated_at).fromNow();
+      }
+    },
+    hooks: {
+      beforeValidation: function () {
+        if (!this.created_at) {
+          this.created_at = new Date();
+        }
+        this.updated_at = new Date();
       }
     },
     validations: {
