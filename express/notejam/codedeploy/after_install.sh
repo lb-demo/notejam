@@ -6,8 +6,6 @@
 EC2_AVAIL_ZONE=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone`
 EC2_REGION="`echo \"$EC2_AVAIL_ZONE\" | sed 's/[a-z]$//'`"
 
-echo $EC2_REGION
-
 echo -n "DB_HOST=" > /usr/share/notejam/.env
 cat /home/ec2-user/endpoint.txt >> /usr/share/notejam/.env
 echo "" >> /usr/share/notejam/.env
