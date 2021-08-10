@@ -15,5 +15,7 @@ aws --region=$EC2_REGION ssm get-parameter --name "/Notejam/Database/DBUser" --w
 echo -n "DB_NAME=" >> /usr/share/notejam/.env
 aws --region=$EC2_REGION ssm get-parameter --name "/Notejam/Database/DBName" --with-decryption --output text --query Parameter.Value >> /usr/share/notejam/.env
 
+sleep 10
+
 cp /tmp/ecosystem.config.js /usr/share/notejam/
 cd /usr/share/notejam && node db.js
